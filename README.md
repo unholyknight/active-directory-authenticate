@@ -96,27 +96,27 @@ The ignored key is an array of keys for which you do not want data returned. By 
 
 ## Group Membership Handling
 
-The authenticated user's groups are returned in two keys, memberof and groups. The memberof attribute does not need to be explicitly set in the select array, but it can be for more clear readability from the application end. User groups are always retrieved and returned in memberof and groups.
+The authenticated user's groups are always retrieved and returned in the memberof and groups keys.
 
 memberof contains an array of the user's Active Directory groups in their original format.
 
 ```php
 'memberof' => [
-    0 => CN=Admins,OU=Applications,OU=Groups,DC=acme,DC=org
-    1 => CN=WordPress Editors,OU=Applications,OU=Groups,DC=acme,DC=org
-    2 => CN=Google Apps Users,OU=Applications,OU=Groups,DC=acme,DC=org
-    3 => CN=Members,OU=Security,OU=Groups,DC=acme,DC=org
+    0 => 'CN=Admins,OU=Applications,OU=Groups,DC=acme,DC=org'
+    1 => 'CN=WordPress Editors,OU=Applications,OU=Groups,DC=acme,DC=org'
+    2 => 'CN=Google Apps Users,OU=Applications,OU=Groups,DC=acme,DC=org'
+    3 => 'CN=Members,OU=Security,OU=Groups,DC=acme,DC=org'
 ]
 ```
 
-groups contains an array of the user's active Directory groups by name only. You may find this more useful to use when defining more granular access to controllers and actions.
+groups contains an array of the user's Active Directory groups by name only. You may find this useful when defining granular access to controllers and actions.
 
 ```php
 'groups' => [
-    0 => Admins
-    1 => WordPress Editors
-    2 => Google Apps Users
-    3 => Members
+    0 => 'Admins'
+    1 => 'WordPress Editors'
+    2 => 'Google Apps Users'
+    3 => 'Members'
 ]
 ```
 
