@@ -102,9 +102,9 @@ memberof contains an array of the user's Active Directory groups in their origin
 
 ```php
 'memberof' => [
-    0 => 'CN=Admins,OU=Applications,OU=Groups,DC=acme,DC=org'
-    1 => 'CN=WordPress Editors,OU=Applications,OU=Groups,DC=acme,DC=org'
-    2 => 'CN=Google Apps Users,OU=Applications,OU=Groups,DC=acme,DC=org'
+    0 => 'CN=Admins,OU=Applications,OU=Groups,DC=acme,DC=org',
+    1 => 'CN=WordPress Editors,OU=Applications,OU=Groups,DC=acme,DC=org',
+    2 => 'CN=Google Apps Users,OU=Applications,OU=Groups,DC=acme,DC=org',
     3 => 'CN=Members,OU=Security,OU=Groups,DC=acme,DC=org'
 ]
 ```
@@ -113,9 +113,9 @@ groups contains an array of the user's Active Directory groups by name only. You
 
 ```php
 'groups' => [
-    0 => 'Admins'
-    1 => 'WordPress Editors'
-    2 => 'Google Apps Users'
+    0 => 'Admins',
+    1 => 'WordPress Editors',
+    2 => 'Google Apps Users',
     3 => 'Members'
 ]
 ```
