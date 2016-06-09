@@ -42,11 +42,53 @@ class AdldapAuthenticate extends FormAuthenticate
     }
 
     /**
+     * Clean an array of user attributes
+     *
+     * @param array $attributes Array of attributes to clean up against the ignored setting.
+     * @return array An array of attributes stripped of ignored keys.
+     */
+    protected function _cleanAttributes($attributes)
+    {
+        foreach ($attributes as $key => $value) {
+            if (is_int($key) || in_array($key, $this->_config['ignored'])) {
+                unset($attributes[$key]);
+            } else if ($key != 'memberof' && is_array($value) && count($value) == 1) {
+                $attributes[$key] = $value[0];
+            }
+        }
+
+        return $attributes;
+    }
+
+    /**
+     * Create a friendly, formatted groups array
+     *
+     * @param array $memberships Array of memberships to create a friendly array for.
+     * @return array An array of friendly group names.
+     */
+    protected function _cleanGroups($memberships)
+    {
+        $groups = [];
+        foreach ($memberships as $group) {
+            $parts = explode(',', $group);
+
+            foreach ($parts as $part) {
+                if (substr($part, 0, 3) == 'CN=') {
+                    $groups[] = substr($part, 3);
+                    break;
+                }
+            }
+        }
+
+        return $groups;
+    }
+
+    /**
      * Authenticate user
      *
-     * @param Request $request Request object.
-     * @param Response $response Response object.
-     * @return array|bool Array of user info on success, false on falure.
+     * @param \Cake\Network\Request $request The request that contains login information.
+     * @param \Cake\Network\Response $response Unused response object.
+     * @return mixed False on login failure. An array of User data on success.
      */
     public function authenticate(Request $request, Response $response)
     {
@@ -62,7 +104,7 @@ class AdldapAuthenticate extends FormAuthenticate
      *
      * @param string $username The username (samaccountname).
      * @param string $password The password.
-     * @return bool|array Either false on failure, or an array of user data.
+     * @return mixed False on failure. An array of user data on success.
      */
     public function findAdUser($username, $password)
     {
@@ -80,39 +122,16 @@ class AdldapAuthenticate extends FormAuthenticate
                 }
 
                 $user = $search->whereEquals('samaccountname', $username)->first();
+                $attributes = $user->getAttributes();
 
-                if ($user) {
-                    $attributes = $user->getAttributes();
-
-                    if (!is_array($this->_config['ignored'])) {
-                        $this->_config['ignored'] = [];
-                    }
-
-                    foreach ($attributes as $key => $value) {
-                        if (is_int($key) || in_array($key, $this->_config['ignored'])) {
-                            unset($attributes[$key]);
-                        } else if ($key != 'memberof' && is_array($value) && count($value) == 1) {
-                            $attributes[$key] = $value[0];
-                        }
-                    }
-
-                    $groups = [];
-                    foreach ($attributes['memberof'] as $group) {
-                        $parts = explode(',', $group);
-
-                        foreach ($parts as $part) {
-                            if (substr($part, 0, 3) == 'CN=') {
-                                $groups[] = substr($part, 3);
-                                break;
-                            }
-                        }
-                    }
-                    $attributes['groups'] = $groups;
-
-                    return $attributes;
+                if (!is_array($this->_config['ignored'])) {
+                    $this->_config['ignored'] = [];
                 }
 
-                return false;
+                $attributes = $this->_cleanAttributes($attributes);
+                $attributes['groups'] = $this->_cleanGroups($attributes['memberof']);
+
+                return $attributes;
             }
 
             return false;

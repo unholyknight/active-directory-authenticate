@@ -1,6 +1,6 @@
 # Active Directory Authentication for [CakePHP 3](https://cakephp.org/)
 
-Extends CakePHP's built-in authentication types to offer Form authentication for Active Directory users over LDAP using [Adldap2](https://github.com/Adldap2/Adldap2/).
+Extends CakePHP's built-in authentication types to offer form authentication for Active Directory users over LDAP using [Adldap2](https://github.com/Adldap2/Adldap2/).
 
 ## Installing With Composer
 
