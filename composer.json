@@ -10,6 +10,11 @@
             "name": "Eric Lorentz",
             "homepage": "http://ericlorentz.com",
             "role": "Author"
+        },
+        {
+            "name": "Jarosław Milewski",
+            "homepage": "https://milewski.it",
+            "role": "Developer, bug eliminator"
         }
     ],
     "require": {
