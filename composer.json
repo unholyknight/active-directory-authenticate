@@ -1,15 +1,20 @@
 {
-    "name": "unholyknight/active-directory-authenticate",
+    "name": "milewski-jaroslaw/active-directory-authenticate",
     "description": "CakePHP plugin for Active Directory authentication over LDAP.",
     "type": "cakephp-plugin",
     "keywords": ["cakephp", "authenticate", "ldap", "ad"],
-    "homepage": "http://github.com/unholyknight/active-directory-authenticate",
+    "homepage": "http://github.com/milewski-jaroslaw/active-directory-authenticate",
     "license": "MIT",
     "authors": [
         {
             "name": "Eric Lorentz",
             "homepage": "http://ericlorentz.com",
             "role": "Author"
+        },
+        {
+            "name": "Jarosław Milewski",
+            "homepage": "https://milewski.it",
+            "role": "Developer, bug eliminator"
         }
     ],
     "require": {
@@ -21,8 +26,8 @@
         "phpunit/phpunit": "~5.3"
     },
     "support": {
-        "issues": "http://github.com/unholyknight/active-directory-authenticate/issues",
-        "source": "http://github.com/unholyknight/active-directory-authenticate"
+        "issues": "http://github.com/milewski-jaroslaw/active-directory-authenticate/issues",
+        "source": "http://github.com/milewski-jaroslaw/active-directory-authenticate"
     },
     "autoload": {
         "psr-4": {

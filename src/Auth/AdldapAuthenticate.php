@@ -34,7 +34,7 @@ class AdldapAuthenticate extends FormAuthenticate
             ],
             'select' => null
         ]);
-        $this->config($config);
+        $this->config($config, null, false);
 
         $this->ad = new Adldap();
         $this->provider = new \Adldap\Connections\Provider($this->_config['config']);
