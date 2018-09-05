@@ -1,5 +1,5 @@
 {
-    "name": "milewski-jaroslaw/active-directory-authenticate",
+    "name": "unholyknight/active-directory-authenticate",
     "description": "CakePHP plugin for Active Directory authentication over LDAP.",
     "type": "cakephp-plugin",
     "keywords": ["cakephp", "authenticate", "ldap", "ad"],
@@ -15,19 +15,24 @@
             "name": "Jarosław Milewski",
             "homepage": "https://milewski.it",
             "role": "Developer, bug eliminator"
+        },
+        {
+            "name": "Alysson Azevedo",
+            "homepage": "https://github.com/alysson-azevedo",
+            "role": "Contributor"
         }
     ],
     "require": {
-        "php": ">=5.5.0",
+        "php": ">=5.6.0",
         "cakephp/cakephp": "~3.0",
         "adldap2/adldap2": "~6.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "~5.3"
+        "phpunit/phpunit": "^5.7.14|^6.0"
     },
     "support": {
-        "issues": "http://github.com/milewski-jaroslaw/active-directory-authenticate/issues",
-        "source": "http://github.com/milewski-jaroslaw/active-directory-authenticate"
+        "issues": "http://github.com/unholyknight/active-directory-authenticate/issues",
+        "source": "http://github.com/unholyknight/active-directory-authenticate"
     },
     "autoload": {
         "psr-4": {
